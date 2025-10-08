@@ -179,15 +179,7 @@ This will execute the following tools:
 
 ## License & Contact
 
-{% if cookiecutter.open_source_license == 'MIT' %}
-MIT License
-{% elif cookiecutter.open_source_license == 'BSD' %}
-BSD License
-{% elif cookiecutter.open_source_license == 'GPLv3' %}
-GNU General Public License v3
-{% elif cookiecutter.open_source_license == 'Apache Software License 2.0' %}
-Apache Software License 2.0
-{% endif %}
+This project is licensed under the [{{ cookiecutter.open_source_license }} License](LICENSE).
 
 ---
 
