@@ -1,5 +1,5 @@
 """
-WSGI config for pharmacy_api project.
+WSGI config for {{ cookiecutter.project_name }} project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "pharmacy_api.settings.development")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "{{ cookiecutter.project_slug }}.settings.development")
 
 application = get_wsgi_application()

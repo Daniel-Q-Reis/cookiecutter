@@ -21,7 +21,7 @@ ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ.get("DB_NAME", "pharmacy_db"),
+        "NAME": os.environ.get("DB_NAME", "{{ cookiecutter.project_slug.replace('-', '_').replace(' ', '_') }}_db"),
         "USER": os.environ.get("DB_USER", "postgres"),
         "PASSWORD": os.environ.get("DB_PASSWORD", "postgres"),
         "HOST": os.environ.get("DB_HOST", "db"),
@@ -40,9 +40,9 @@ CORS_ALLOWED_ORIGINS = [
 
 # DRF Spectacular settings
 SPECTACULAR_SETTINGS = {
-    "TITLE": "Pharmacy API",
-    "DESCRIPTION": "A comprehensive pharmacy management system API",
-    "VERSION": "1.0.0",
+    "TITLE": "{{ cookiecutter.project_name }} API",
+    "DESCRIPTION": "{{ cookiecutter.description }}",
+    "VERSION": "{{ cookiecutter.version }}",
     "SERVE_INCLUDE_SCHEMA": False,
     # OTHER SETTINGS
 }

@@ -1,0 +1,15 @@
+{
+    "project_name": "My API Project",
+    "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+    "description": "A modern Django REST API project.",
+    "author_name": "Daniel de Queiroz Reis",
+    "email": "danielqreis@gmail.com",
+    "version": "0.1.0",
+    "open_source_license": [
+        "MIT",
+        "BSD",
+        "GPLv3",
+        "Apache Software License 2.0",
+        "Not open source"
+    ]
+}

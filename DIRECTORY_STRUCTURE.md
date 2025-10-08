@@ -1,6 +1,6 @@
-# Pharmacy API - Complete Directory Structure
+# {{ cookiecutter.project_name }} - Complete Directory Structure
 
-pharmacy_api/
+{{ cookiecutter.project_slug }}/
 ├── .gitignore
 ├── .pre-commit-config.yaml
 ├── Dockerfile
@@ -19,85 +19,28 @@ pharmacy_api/
 │   ├── __init__.py
 │   ├── core/
 │   │   ├── __init__.py
-│   │   ├── admin.py
 │   │   ├── apps.py
-│   │   ├── models.py
 │   │   ├── management/
-│   │   │   ├── __init__.py
 │   │   │   └── commands/
 │   │   │       ├── __init__.py
 │   │   │       ├── createsuperuser_if_none_exists.py
-│   │   │       └── seed_db.py
-│   │   ├── tests/
-│   │   │   ├── __init__.py
-│   │   │   └── test_models.py
-│   │   ├── views.py
-│   │   └── urls.py
-│   ├── users/
-│   │   ├── __init__.py
-│   │   ├── admin.py
-│   │   ├── apps.py
-│   │   ├── models.py
-│   │   ├── tests/
-│   │   │   ├── __init__.py
-│   │   │   └── test_models.py
-│   │   ├── urls.py
-│   │   └── views.py
-│   ├── products/
-│   │   ├── __init__.py
-│   │   ├── admin.py
-│   │   ├── apps.py
-│   │   ├── factories/
-│   │   │   ├── __init__.py
-│   │   │   └── factories.py
-│   │   ├── models.py
-│   │   ├── periodic_tasks.py
-│   │   ├── serializers.py
-│   │   ├── services.py
-│   │   ├── tasks.py
-│   │   ├── tests/
-│   │   │   ├── __init__.py
-│   │   │   ├── test_models.py
-│   │   │   └── test_services.py
-│   │   ├── urls.py
-│   │   └── views.py
-│   ├── inventory/
-│   │   ├── __init__.py
-│   │   ├── admin.py
-│   │   ├── apps.py
-│   │   ├── models.py
-│   │   ├── tests/
-│   │   │   ├── __init__.py
-│   │   │   └── test_models.py
-│   │   ├── urls.py
-│   │   └── views.py
-│   ├── sales/
-│   │   ├── __init__.py
-│   │   ├── admin.py
-│   │   ├── apps.py
-│   │   ├── factories/
-│   │   │   ├── __init__.py
-│   │   │   └── factories.py
-│   │   ├── models.py
-│   │   ├── serializers.py
-│   │   ├── services.py
-│   │   ├── tests/
-│   │   │   ├── __init__.py
-│   │   │   ├── test_models.py
-│   │   │   └── test_services.py
-│   │   ├── urls.py
-│   │   └── views.py
-│   └── reports/
+│   │   │       └── setup_project.py
+│   │   ├── static/
+│   │   └── templates/
+│   └── users/
 │       ├── __init__.py
 │       ├── admin.py
 │       ├── apps.py
-│       ├── models.py
-│       ├── tests/
+│       ├── factories.py
+│       ├── migrations/
 │       │   ├── __init__.py
-│       │   └── test_models.py
+│       │   └── 0001_initial.py
+│       ├── models.py
+│       ├── serializers.py
+│       ├── tests.py
 │       ├── urls.py
 │       └── views.py
-├── pharmacy_api/
+├── {{ cookiecutter.project_slug }}/
 │   ├── __init__.py
 │   ├── asgi.py
 │   ├── celery.py
@@ -109,6 +52,21 @@ pharmacy_api/
 │   │   └── production.py
 │   ├── urls.py
 │   └── wsgi.py
-└── scripts/
-    ├── setup.bat
-    └── setup.sh
+├── docs/
+│   └── images/
+│       ├── dashboard.png
+│       └── sales-form.png
+├── scripts/
+│   ├── run_docker.bat
+│   ├── run_docker.sh
+│   ├── start_dev.bat
+│   ├── start_dev.sh
+│   ├── stop_dev.bat
+│   ├── stop_dev.sh
+│   ├── use_docker_settings.bat
+│   ├── use_docker_settings.sh
+│   ├── use_local_settings.bat
+│   └── use_local_settings.sh
+├── static/
+└── venv/
+    └── (virtual environment files)

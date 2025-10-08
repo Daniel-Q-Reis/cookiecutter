@@ -4,13 +4,13 @@ REM Switch to Docker settings
 echo Switching to Docker settings...
 
 REM Check if backup file exists
-if exist "pharmacy_api\settings\development.py.docker.bak" (
+if exist "{{ cookiecutter.project_slug }}\settings\development.py.docker.bak" (
     REM Restore the Docker settings from backup
-    copy "pharmacy_api\settings\development.py.docker.bak" "pharmacy_api\settings\development.py"
-    del "pharmacy_api\settings\development.py.docker.bak"
+    copy "{{ cookiecutter.project_slug }}\settings\development.py.docker.bak" "{{ cookiecutter.project_slug }}\settings\development.py"
+    del "{{ cookiecutter.project_slug }}\settings\development.py.docker.bak"
     echo Successfully switched to Docker settings.
 ) else (
     REM Update the development.py file to use 'db' instead of localhost for PostgreSQL
-    powershell -Command "(gc pharmacy_api\settings\development.py) -replace "'HOST': 'localhost'", "'HOST': 'db'" | Out-File -encoding ASCII pharmacy_api\settings\development.py"
+    powershell -Command "(gc {{ cookiecutter.project_slug }}\settings\development.py) -replace "'HOST': 'localhost'", "'HOST': 'db'" | Out-File -encoding ASCII {{ cookiecutter.project_slug }}\settings\development.py"
     echo Successfully switched to Docker settings.
 )

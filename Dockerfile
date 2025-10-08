@@ -6,7 +6,7 @@ FROM python:3.11-slim AS base
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
-ENV DJANGO_SETTINGS_MODULE=pharmacy_api.settings.development
+ENV DJANGO_SETTINGS_MODULE={{ cookiecutter.project_slug }}.settings.development
 
 # Set work directory
 WORKDIR /app
@@ -41,4 +41,4 @@ USER appuser
 EXPOSE 8000
 
 # Run the application
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "pharmacy_api.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "{{ cookiecutter.project_slug }}.wsgi:application"]

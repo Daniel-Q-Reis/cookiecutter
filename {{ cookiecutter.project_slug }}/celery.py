@@ -4,9 +4,9 @@ from celery import Celery
 from celery.schedules import crontab
 
 # Set the default Django settings module for the 'celery' program.
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "pharmacy_api.settings.development")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "{{ cookiecutter.project_slug }}.settings.development")
 
-app = Celery("pharmacy_api")
+app = Celery("{{ cookiecutter.project_slug }}")
 
 # Using a string here means the worker doesn't have to serialize
 # the configuration object to child processes.
@@ -19,8 +19,5 @@ app.autodiscover_tasks()
 
 # Periodic tasks configuration
 app.conf.beat_schedule = {
-    "daily-expiring-products-check": {
-        "task": "apps.products.tasks.daily_expiring_products_check",
-        "schedule": crontab(hour="9", minute="0"),  # Daily at 9:00 AM
-    },
+    # Add your periodic tasks here
 }

@@ -4,7 +4,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
-      POSTGRES_DB: pharmacy_db
+      POSTGRES_DB: {{ cookiecutter.project_slug.replace('-', '_').replace(' ', '_') }}_db
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
@@ -29,7 +29,7 @@ services:
 
   celery_worker:
     build: .
-    command: celery -A pharmacy_api worker --loglevel=info
+    command: celery -A {{ cookiecutter.project_slug }} worker --loglevel=info
     volumes: []
     env_file:
       - ./.env
@@ -39,7 +39,7 @@ services:
 
   celery_beat:
     build: .
-    command: celery -A pharmacy_api beat --loglevel=info
+    command: celery -A {{ cookiecutter.project_slug }} beat --loglevel=info
     volumes: []
     env_file:
       - ./.env

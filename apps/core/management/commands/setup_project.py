@@ -6,8 +6,8 @@ from django.core.management.base import BaseCommand, CommandParser
 
 class Command(BaseCommand):
     """
-    Runs the initial setup for the project, including migrations,
-    superuser creation, and optional data seeding.
+    Runs the initial setup for the project, including migrations
+    and superuser creation.
 
     This command is idempotent and safe to run multiple times.
     """
@@ -18,12 +18,6 @@ class Command(BaseCommand):
         """
         Add arguments to the command.
         """
-        parser.add_argument(
-            "--no-seed",
-            action="store_false",
-            dest="seed",
-            help="Do not seed the database with sample data.",
-        )
         parser.add_argument(
             "--no-superuser",
             action="store_false",
@@ -64,31 +58,6 @@ class Command(BaseCommand):
                 )
             except Exception as e:
                 self.stderr.write(self.style.ERROR(f"Superuser creation failed: {e}"))
-                return
-
-        # --- 3. Seed Database (if requested) ---
-        # You were right, making this optional is the best approach.
-        if options["seed"]:
-            self.stdout.write(
-                self.style.HTTP_INFO("Seeding database with sample data...")
-            )
-            try:
-                call_command(
-                    "seed_db",
-                    "--brands",
-                    50,
-                    "--categories",
-                    50,
-                    "--products",
-                    200,
-                    "--stock-items",
-                    400,
-                    "--sales",
-                    450,
-                )
-                self.stdout.write(self.style.SUCCESS("Database seeded successfully."))
-            except Exception as e:
-                self.stderr.write(self.style.ERROR(f"Data seeding failed: {e}"))
                 return
 
         self.stdout.write(self.style.SUCCESS("Project setup complete!"))
