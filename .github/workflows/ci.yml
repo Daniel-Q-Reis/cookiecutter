@@ -15,7 +15,7 @@ jobs:
         image: postgres:15
         env:
           POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: test_pharmacy_db
+          POSTGRES_DB: ${{ cookiecutter.project_slug.replace('-', '_').replace(' ', '_') }}_db
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -47,7 +47,7 @@ jobs:
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
         DB_HOST: localhost
-        DB_NAME: test_pharmacy_db
+        DB_NAME: ${{ cookiecutter.project_slug.replace('-', '_').replace(' ', '_') }}_db
         DB_USER: postgres
         DB_PASSWORD: postgres
         REDIS_URL: redis://localhost:6379/0
@@ -59,7 +59,7 @@ jobs:
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
         DB_HOST: localhost
-        DB_NAME: test_pharmacy_db
+        DB_NAME: ${{ cookiecutter.project_slug.replace('-', '_').replace(' ', '_') }}_db
         DB_USER: postgres
         DB_PASSWORD: postgres
         REDIS_URL: redis://localhost:6379/0
@@ -75,10 +75,13 @@ jobs:
       run: mypy --strict .
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        DB_HOST: "localhost"
-        DB_NAME: "test_db"
-        DB_USER: "test_user"
-        DB_PASSWORD: "test_password"
+        DB_HOST: localhost
+        DB_NAME: ${{ cookiecutter.project_slug.replace('-', '_').replace(' ', '_') }}_db
+        DB_USER: postgres
+        DB_PASSWORD: postgres
+        REDIS_URL: redis://localhost:6379/0
+        CELERY_BROKER_URL: redis://localhost:6379/0
+        CELERY_RESULT_BACKEND: redis://localhost:6379/0
 
     - name: Run security scanning
       run: bandit -r .
