@@ -31,7 +31,8 @@ def main():
         import subprocess
         subprocess.check_call(["git", "init"])
         subprocess.check_call(["git", "add", "."])
-        print("Git repository initialized and files added to staging.")
+        subprocess.check_call(["git", "commit", "-m", "feat: initial commit from cookiecutter template"])
+        print("Git repository initialized and initial commit created.")
     except (ImportError, subprocess.CalledProcessError):
         print("Git repository could not be initialized. Make sure Git is installed.")
 
