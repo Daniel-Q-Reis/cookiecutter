@@ -27,7 +27,7 @@ services:
       - "8000:8000"
     environment:
       - DB_HOST=db
-      - DB_NAME=pharmacy_db
+      - DB_NAME={{ cookiecutter.project_slug.replace('-', '_').replace(' ', '_') }}_db
       - DB_USER=postgres
       - DB_PASSWORD=postgres
       - REDIS_URL=redis://redis:6379/0
