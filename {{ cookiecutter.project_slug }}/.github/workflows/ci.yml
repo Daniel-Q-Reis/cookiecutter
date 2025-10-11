@@ -45,7 +45,7 @@ jobs:
     - name: Run migrations
       run: python manage.py migrate
       env:
-        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        SECRET_KEY: {% raw %}${{ secrets.SECRET_KEY }}{% endraw %}
         DB_HOST: localhost
         DB_NAME: ${{ cookiecutter.project_slug.replace('-', '_').replace(' ', '_') }}_db
         DB_USER: postgres
@@ -57,7 +57,7 @@ jobs:
     - name: Run tests
       run: pytest
       env:
-        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        SECRET_KEY: {% raw %}${{ secrets.SECRET_KEY }}{% endraw %}
         DB_HOST: localhost
         DB_NAME: ${{ cookiecutter.project_slug.replace('-', '_').replace(' ', '_') }}_db
         DB_USER: postgres
@@ -74,7 +74,7 @@ jobs:
     - name: Run type checking
       run: mypy --strict .
       env:
-        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        SECRET_KEY: {% raw %}${{ secrets.SECRET_KEY }}{% endraw %}
         DB_HOST: localhost
         DB_NAME: ${{ cookiecutter.project_slug.replace('-', '_').replace(' ', '_') }}_db
         DB_USER: postgres
